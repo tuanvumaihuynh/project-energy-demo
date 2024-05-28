@@ -8,6 +8,17 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
   ],
   css: ["~/assets/css/tailwind.css"],
+  components: [
+    {
+      path: "~/components/esp",
+      pathPrefix: false,
+    },
+    {
+      path: "~/components/energy",
+      pathPrefix: false,
+    },
+  ],
+
   runtimeConfig: {
     public: {
       apiBase: "",
