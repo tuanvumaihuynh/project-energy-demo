@@ -28,6 +28,7 @@ const { data, pending, error } = await useAPI<ItemPagination<Device>>(
   {
     params: {
       page: 1,
+      tags: "Demo",
       page_size: 100,
     },
     lazy: true,
