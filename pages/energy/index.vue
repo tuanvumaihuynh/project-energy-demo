@@ -8,5 +8,5 @@
 </template>
 
 <script setup lang="ts">
-const { data } = await useCustomFetch("/devices");
+const { data } = await useAPI<ItemPagination<Device>>("/devices");
 </script>
