@@ -10,6 +10,10 @@ export default defineNuxtConfig({
   css: ["~/assets/css/tailwind.css"],
   components: [
     {
+      path: "~/components",
+      pathPrefix: false,
+    },
+    {
       path: "~/components/esp",
       pathPrefix: false,
     },
