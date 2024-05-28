@@ -6,8 +6,6 @@ export function useAPI<T>(url: String, options = {}) {
     headers: {
       "X-Api-Key": config.public.apiKey,
     },
-    params: {
-      ...options,
-    },
+    ...options,
   });
 }
