@@ -1,25 +1,25 @@
 export default function useLandingRoutes(): RouteProps[] {
   const routeList: RouteProps[] = [
+    // {
+    //   path: "/energy",
+    //   label: "Energy demo",
+    // },
+    // {
+    //   path: "/esp",
+    //   label: "ESP32 demo",
+    // },
     {
-      path: "/energy",
-      label: "Energy demo",
+      path: "/docs",
+      label: "Docs",
     },
     {
-      path: "/esp",
-      label: "Esp demo",
+      path: "/teams",
+      label: "Teams",
     },
-    // {
-    //   path: "/docs",
-    //   label: "Docs",
-    // },
-    // {
-    //   path: "/teams",
-    //   label: "Teams",
-    // },
-    // {
-    //   path: "/contact",
-    //   label: "Contact",
-    // },
+    {
+      path: "/contact",
+      label: "Contact",
+    },
   ];
   return routeList;
 }
