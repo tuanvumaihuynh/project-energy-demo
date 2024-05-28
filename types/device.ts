@@ -8,3 +8,5 @@ interface Device {
   tags: string[];
   created_at: string;
 }
+
+type DeviceType = "Gateway" | "Subdevice" | "Normal device";
