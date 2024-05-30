@@ -6,7 +6,7 @@
         aria-label="Loading..."
       />
     </div>
-    <div v-else class="grid gap-4 grid-cols-1 md:gap-8 sm:grid-cols-3">
+    <div v-else class="grid gap-4 grid-cols-1 md:gap-8 sm:grid-cols-2">
       <DeviceCard
         class="cursor-pointer"
         @click="() => onDeviceClick(device)"
