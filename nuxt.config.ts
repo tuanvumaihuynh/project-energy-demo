@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "@nuxtjs/color-mode",
+    "@nuxt/image",
   ],
   css: ["~/assets/css/tailwind.css"],
   components: [
@@ -25,8 +26,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: "",
-      apiKey: "",
+      apiBase: process.env.NUXT_API_BASE,
+      apiKey: process.env.NUXT_API_KEY,
     },
   },
   // color-mode options
