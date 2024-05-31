@@ -22,10 +22,13 @@
 </template>
 
 <script setup lang="ts">
+import { useToast } from "@/components/ui/toast/use-toast";
+
 const LED_INTERVAL = 1000;
 
 const route = useRoute();
 const deviceId = computed(() => route.params.id as string);
+const { toast } = useToast();
 
 const {
   data: initVal,
@@ -55,13 +58,25 @@ const leds = ref<Led[]>([
 ]);
 
 async function onLedChange(led: Led) {
-  const res = await useClientAPI("/telemetry/attributes", {
-    method: "POST",
-    query: { device_id: deviceId.value },
-    body: {
-      [led.key]: led.status,
-    },
-  });
+  try {
+    const res = await useClientAPI("/telemetry/attributes", {
+      method: "POST",
+      query: { device_id: deviceId.value },
+      body: {
+        [led.key]: led.status,
+      },
+    });
+    toast({
+      title: "Success",
+      description: "Led status updated successfully",
+    });
+  } catch (error) {
+    led.status = !led.status;
+    toast({
+      title: "Error",
+      description: "Failed to update led status",
+    });
+  }
 }
 
 async function fetchLedStatus() {
