@@ -10,3 +10,9 @@ interface Device {
 }
 
 type DeviceType = "Gateway" | "Subdevice" | "Normal device";
+
+interface Led {
+  key: string;
+  name: string;
+  status: boolean;
+}

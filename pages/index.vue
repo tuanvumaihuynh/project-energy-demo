@@ -1,20 +1,18 @@
 <template>
-  <div class="flex flex-col flex-1 gap-3">
-    <div v-if="pending" class="flex flex-1 justify-center items-center">
-      <LoaderCircle
-        class="w-12 h-12 animate-spin text-primary"
-        aria-label="Loading..."
-      />
-    </div>
-    <div v-else class="grid gap-4 grid-cols-1 md:gap-8 sm:grid-cols-2">
-      <DeviceCard
-        class="cursor-pointer"
-        @click="() => onDeviceClick(device)"
-        v-for="device in data!.items"
-        :key="device.id"
-        :device="device"
-      />
-    </div>
+  <div v-if="pending" class="flex flex-1 justify-center items-center">
+    <LoaderCircle
+      class="w-12 h-12 animate-spin text-primary"
+      aria-label="Loading..."
+    />
+  </div>
+  <div v-else class="grid gap-4 grid-cols-1 md:gap-8 sm:grid-cols-2">
+    <DeviceCard
+      v-for="device in data!.items"
+      @click="() => onDeviceClick(device)"
+      :key="device.id"
+      :device="device"
+      class="cursor-pointer hover:bg-slate-100 dark:hover:bg-muted/30 transition-colors duration-300 ease-in-out"
+    />
   </div>
 </template>
 

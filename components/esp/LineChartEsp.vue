@@ -28,10 +28,6 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  deviceId: string;
-}>();
-
 const dataX = [
   {
     name: "Jan",

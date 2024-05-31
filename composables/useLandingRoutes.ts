@@ -10,7 +10,7 @@ export default function useLandingRoutes(): RouteProps[] {
     // },
     {
       path: "/docs",
-      label: "Docs",
+      label: "Documents",
     },
     {
       path: "/teams",

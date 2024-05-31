@@ -26,6 +26,7 @@
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.7.0",
     "@nuxtjs/color-mode": "^3.4.1",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.12.0",

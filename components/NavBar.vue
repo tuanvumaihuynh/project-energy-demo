@@ -7,8 +7,9 @@
         href="/"
         class="flex items-center gap-2 text-lg font-semibold md:text-base"
       >
-        <Package class="h-6 w-6 text-primary" color="#2b75ee" />
-        <span>ProjectEnergy</span>
+        <!-- <Package class="h-6 w-6 text-primary" color="#2b75ee" /> -->
+        <NuxtImg height="36" width="36" src="/logo.svg" />
+        <span>PE Demo</span>
       </a>
       <!-- Mobile -->
       <Sheet>

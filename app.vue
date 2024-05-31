@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: "ProjectEnergy",
+  title: "Project Energy Demo",
   meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
 });
 </script>
