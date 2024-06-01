@@ -26,8 +26,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_API_BASE,
-      apiKey: process.env.NUXT_API_KEY,
+      apiBase: "",
+      apiKey: "",
     },
   },
   // color-mode options
