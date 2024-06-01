@@ -62,7 +62,7 @@
         >
           <a
             aria-label="View on GitHub"
-            href="https://github.com/nuxt/nuxt"
+            href="https://github.com/tuanvumaihuynh/project-energy-demo"
             target="_blank"
           >
             <svg
