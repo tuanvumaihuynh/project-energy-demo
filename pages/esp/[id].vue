@@ -44,10 +44,11 @@
 <script setup lang="ts">
 import { Cpu, LoaderCircle } from "lucide-vue-next";
 
+const STATUS_INTERVAL = 1000;
+
 const route = useRoute();
 
 const deviceId = computed(() => route.params.id as string);
-const date = new Date().toISOString();
 
 const {
   data: device,
@@ -56,4 +57,19 @@ const {
 } = useAPI<Device>(`/devices/${deviceId.value}`, {
   lazy: true,
 });
+
+async function fetchDeviceStatus() {
+  try {
+    const connected = await useClientAPI<boolean>(
+      `/devices/${deviceId.value}/connected`,
+      {
+        method: "GET",
+      }
+    );
+    device.value!.connected = connected;
+  } catch (error) {}
+}
+
+const { syncPolling } = useSyncPolling();
+syncPolling(fetchDeviceStatus, STATUS_INTERVAL);
 </script>

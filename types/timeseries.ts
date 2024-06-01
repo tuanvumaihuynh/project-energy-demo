@@ -6,3 +6,8 @@ interface AttributeResponse {
   value: any;
   last_update: string;
 }
+
+interface MetricResponse {
+  ts: string;
+  value: any;
+}
