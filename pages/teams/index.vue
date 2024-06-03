@@ -1,24 +1,35 @@
 <template>
-  <div
-    class="flex flex-1 shrink-0 items-center justify-center rounded-lg border-dashed border-2"
-  >
-    <div
-      class="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center"
-    >
-      <Rocket class="w-10 h-10 text-muted-foreground" />
-
-      <h3 class="mt-4 text-lg font-semibold">Feature in development</h3>
-      <p class="mb-4 mt-2 text-sm text-muted-foreground">
-        This feature is currently under development and not fully functional.
-      </p>
-
-      <Button size="sm" class="relative" @click="$router.push('/')">
-        Back to home
-      </Button>
+  <div class="flex flex-col gap-1 flex-1 items-center">
+    <span class="font-semibold text-sm border rounded-md px-3 py-1">Team</span>
+    <h1 class="text-3xl font-bold mt-2">Our team</h1>
+    <div class="pt-12 grid gap-4 grid-cols-1 md:gap-16 sm:grid-cols-2">
+      <ProfileCard
+        v-for="(profile, i) in profiles"
+        :key="i"
+        :name="profile.name"
+        :role="profile.role"
+        :github="profile.github"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Rocket } from "lucide-vue-next";
+useHead({
+  title: "PE Demo | Our team",
+  meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
+});
+
+const profiles = [
+  {
+    name: "Le Tan Kien",
+    role: "20139026",
+    github: "lekien2k2",
+  },
+  {
+    name: "Mai Huynh Tuan Vu",
+    role: "20139098",
+    github: "tuanvumaihuynh",
+  },
+];
 </script>

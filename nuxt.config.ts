@@ -22,6 +22,10 @@ export default defineNuxtConfig({
       path: "~/components/energy",
       pathPrefix: false,
     },
+    {
+      path: "~/components/teams",
+      pathPrefix: false,
+    },
   ],
 
   runtimeConfig: {

@@ -1,43 +1,71 @@
 <template>
-  <div v-if="pending" class="flex flex-1 justify-center items-center">
-    <LoaderCircle
-      class="w-12 h-12 animate-spin text-primary"
-      aria-label="Loading..."
-    />
-  </div>
-  <div v-else class="grid gap-4 grid-cols-1 md:gap-8 sm:grid-cols-2">
-    <DeviceCard
-      v-for="device in data!.items"
-      @click="() => onDeviceClick(device)"
-      :key="device.id"
-      :device="device"
-      class="cursor-pointer hover:bg-slate-100 dark:hover:bg-muted/30 transition-colors duration-300 ease-in-out"
-    />
+  <div class="flex flex-col gap-3 max-w-[800px] mx-auto p-5">
+    <div class="flex flex-col gap-3">
+      <h2 class="text-2xl font-bold"></h2>
+    </div>
+    <Card>
+      <CardHeader class="flex flex-col items-center">
+        <h3 class="text-lg font-bold">MQTT Broker Info</h3>
+      </CardHeader>
+      <CardContent class="flex flex-col items-center">
+        <div class="flex flex-col gap-3">
+          <div class="grid grid-cols-2 gap-3">
+            <span class="font-bold text-right">Broker status:</span>
+            <div class="flex items-center gap-1">
+              <div class="h-3 w-3 rounded-full bg-green-600 blinking" />
+              <span>Available</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <span class="font-bold text-right">Broker:</span>
+            <span
+              class="cursor-pointer"
+              @click="
+                () => {
+                  copy('broker.projectenergy.cloud');
+                  toast({ title: 'Copied to clipboard' });
+                }
+              "
+              >broker.projectenergy.cloud</span
+            >
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <span class="font-bold text-right">TCP Port:</span>
+            <span>1883</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <span class="font-bold text-right">WebSocket Port:</span>
+            <span>8083</span>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { LoaderCircle } from "lucide-vue-next";
+import { useToast } from "@/components/ui/toast/use-toast";
 
-const router = useRouter();
+import { useClipboard } from "@vueuse/core";
 
-const { data, pending, error } = await useAPI<ItemPagination<Device>>(
-  "/devices",
-  {
-    params: {
-      page: 1,
-      tags: "Demo",
-      page_size: 100,
-    },
-    lazy: true,
-  }
-);
-
-function onDeviceClick(device: Device) {
-  if (device.tags.includes("ESP")) {
-    router.push(`/esp/${device.id}`);
-    return;
-  }
-  router.push(`/energy/${device.id}`);
-}
+const { copy } = useClipboard();
+const { toast } = useToast();
 </script>
+
+<style scoped>
+@keyframes pulse-expand {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+.blinking {
+  animation: pulse-expand 1.5s infinite;
+}
+</style>

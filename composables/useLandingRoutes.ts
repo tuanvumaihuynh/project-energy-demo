@@ -9,17 +9,21 @@ export default function useLandingRoutes(): RouteProps[] {
     //   label: "ESP32 demo",
     // },
     {
-      path: "/docs",
-      label: "Documents",
+      path: "/devices",
+      label: "Devices",
     },
+    // {
+    //   path: "/docs",
+    //   label: "Documents",
+    // },
     {
       path: "/teams",
       label: "Teams",
     },
-    {
-      path: "/contact",
-      label: "Contact",
-    },
+    // {
+    //   path: "/contact",
+    //   label: "Contact",
+    // },
   ];
   return routeList;
 }
