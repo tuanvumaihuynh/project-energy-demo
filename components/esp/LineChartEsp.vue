@@ -6,7 +6,10 @@
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <div v-if="pending" class="flex flex-1 justify-center items-center">
+          <div
+            v-if="pending"
+            class="h-96 flex flex-1 justify-center items-center"
+          >
             <LoaderCircle
               class="w-12 h-12 animate-spin text-primary"
               aria-label="Loading..."
@@ -35,7 +38,10 @@
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <div v-if="pending" class="flex flex-1 justify-center items-center">
+          <div
+            v-if="pending"
+            class="h-96 flex flex-1 justify-center items-center"
+          >
             <LoaderCircle
               class="w-12 h-12 animate-spin text-primary"
               aria-label="Loading..."
@@ -65,7 +71,7 @@
 import { LoaderCircle } from "lucide-vue-next";
 import { fromDate, getLocalTimeZone } from "@internationalized/date";
 
-const CHART_DATA_INTERVAL = 1000 * 60;
+const CHART_DATA_INTERVAL = 1000 * 30;
 
 const route = useRoute();
 const deviceId = computed(() => route.params.id as string);
@@ -95,9 +101,9 @@ const {
           key: "temperature",
           start: startDate,
           end: endDate,
-          interval_type: "MINUTE",
-          interval: 1,
-          agg_type: "AVG",
+          // interval_type: "MINUTE",
+          // interval: 1,
+          // agg_type: "AVG",
           limit: 30,
         },
       }),
@@ -107,9 +113,9 @@ const {
           key: "humidity",
           start: startDate,
           end: endDate,
-          interval_type: "MINUTE",
-          interval: 1,
-          agg_type: "AVG",
+          // interval_type: "MINUTE",
+          // interval: 1,
+          // agg_type: "AVG",
           limit: 30,
         },
       }),
@@ -134,6 +140,5 @@ const formatHumidity = computed(() => {
 });
 
 const { syncPolling } = useSyncPolling();
-
 syncPolling(refresh, CHART_DATA_INTERVAL);
 </script>
