@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { Package } from "lucide-vue-next";
+import { Package, LoaderCircle } from "lucide-vue-next";
 import LineChartDevice from "~/components/energy/LineChartDevice.vue";
 
 const { data, pending } = await useAPI<ItemPagination<Device>>("/devices", {

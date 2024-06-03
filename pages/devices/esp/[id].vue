@@ -5,7 +5,15 @@
       aria-label="Loading..."
     />
   </div>
-  <div v-else-if="!device">Something went wrong</div>
+  <div
+    v-else-if="error || !device"
+    class="flex flex-col flex-1 justify-center items-center"
+  >
+    <h3 class="mt-4 text-lg font-semibold">Something went wrong!</h3>
+    <p class="mb-4 mt-2 text-sm text-muted-foreground">
+      {{ error }}
+    </p>
+  </div>
   <div v-else class="flex flex-col gap-3">
     <div class="flex gap-3 items-center">
       <Cpu

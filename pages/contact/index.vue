@@ -21,4 +21,9 @@
 
 <script setup lang="ts">
 import { Rocket } from "lucide-vue-next";
+
+useHead({
+  title: "PE Demo | Contact us",
+  meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
+});
 </script>

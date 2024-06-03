@@ -9,16 +9,14 @@
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-2">
             <h2 class="text-xl font-bold line-clamp-2">
-              {{ device.name.split("|")[1] || device.name }}
+              {{ device.name }}
             </h2>
             <Badge :variant="device.connected ? 'default' : 'destructive'">
               {{ device.connected ? "Connected" : "Disconnected" }}
             </Badge>
           </div>
 
-          <span>
-            {{ device.created_at.replace("T", " ") }}
-          </span>
+          <span> Created at: {{ device.created_at.replace("T", " ") }} </span>
           <div class="flex gap-2">
             <Badge
               v-for="(tag, i) in device.tags"

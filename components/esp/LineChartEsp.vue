@@ -6,10 +6,16 @@
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <span v-if="!formatTemperature">Loading...</span>
+          <div v-if="pending" class="flex flex-1 justify-center items-center">
+            <LoaderCircle
+              class="w-12 h-12 animate-spin text-primary"
+              aria-label="Loading..."
+            />
+          </div>
           <LineChart
+            class="h-96"
             v-else
-            :data="formatTemperature"
+            :data="formatTemperature ?? []"
             index="ts"
             :categories="['temp']"
             :colors="['red']"
@@ -29,10 +35,16 @@
       </CardHeader>
       <CardContent>
         <ClientOnly>
-          <span v-if="!formatHumidity">Loading...</span>
+          <div v-if="pending" class="flex flex-1 justify-center items-center">
+            <LoaderCircle
+              class="w-12 h-12 animate-spin text-primary"
+              aria-label="Loading..."
+            />
+          </div>
           <LineChart
+            class="h-96"
             v-else
-            :data="formatHumidity"
+            :data="formatHumidity ?? []"
             index="ts"
             :categories="['humid']"
             :color="['blue']"
@@ -50,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+import { LoaderCircle } from "lucide-vue-next";
 import { fromDate, getLocalTimeZone } from "@internationalized/date";
 
 const CHART_DATA_INTERVAL = 1000 * 60;
@@ -72,35 +85,41 @@ const {
   pending,
   error,
   refresh,
-} = await useAsyncData("chart-data", async () => {
-  const [temperature, humidity] = await Promise.all([
-    useClientAPI<MetricResponse[]>("/telemetry/metrics/values", {
-      query: {
-        device_id: deviceId.value,
-        key: "temperature",
-        start: startDate,
-        end: endDate,
-        interval_type: "MINUTE",
-        interval: 1,
-        agg_type: "AVG",
-        limit: 30,
-      },
-    }),
-    useClientAPI<MetricResponse[]>("/telemetry/metrics/values", {
-      query: {
-        device_id: deviceId.value,
-        key: "humidity",
-        start: startDate,
-        end: endDate,
-        interval_type: "MINUTE",
-        interval: 1,
-        agg_type: "AVG",
-        limit: 30,
-      },
-    }),
-  ]);
-  return { temperature, humidity };
-});
+} = await useAsyncData(
+  "chart-data",
+  async () => {
+    const [temperature, humidity] = await Promise.all([
+      useClientAPI<MetricResponse[]>("/telemetry/metrics/values", {
+        query: {
+          device_id: deviceId.value,
+          key: "temperature",
+          start: startDate,
+          end: endDate,
+          interval_type: "MINUTE",
+          interval: 1,
+          agg_type: "AVG",
+          limit: 30,
+        },
+      }),
+      useClientAPI<MetricResponse[]>("/telemetry/metrics/values", {
+        query: {
+          device_id: deviceId.value,
+          key: "humidity",
+          start: startDate,
+          end: endDate,
+          interval_type: "MINUTE",
+          interval: 1,
+          agg_type: "AVG",
+          limit: 30,
+        },
+      }),
+    ]);
+    return { temperature, humidity };
+  },
+  {
+    lazy: true,
+  }
+);
 const formatTemperature = computed(() => {
   return metrics.value?.temperature.map((v) => ({
     ts: v.ts.replace("T", " "),
