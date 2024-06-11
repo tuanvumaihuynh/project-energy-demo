@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+await navigateTo("/devices");
 import { useToast } from "@/components/ui/toast/use-toast";
 
 import { useClipboard } from "@vueuse/core";
