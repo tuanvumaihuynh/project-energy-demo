@@ -47,6 +47,9 @@ const { data, pending, error } = await useAPI<ItemPagination<Device>>(
   }
 );
 function onDeviceClick(device: Device) {
+  if (device.is_gateway) {
+    return;
+  }
   if (device.tags.includes("ESP")) {
     router.push(`devices/esp/${device.id}`);
     return;
