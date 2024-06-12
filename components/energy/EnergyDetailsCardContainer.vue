@@ -18,7 +18,7 @@
         <CardHeader
           class="flex flex-row items-center justify-between space-y-0 pb-2"
         >
-          <CardTitle class="text-sm font-medium">Total Revenue</CardTitle>
+          <CardTitle class="text-sm font-medium">Total Cost</CardTitle>
           <Wallet class="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
@@ -83,7 +83,7 @@ const PRICE = 3900;
 const route = useRoute();
 const deviceId = computed(() => route.params.id as string);
 
-const startDate = "2024-05-31T00:00:00+07:00";
+const startDate = "2024-04-30T00:00:00+07:00";
 const endDate = "2024-05-31T23:59:59+07:00";
 const {
   data: metrics,
@@ -99,7 +99,7 @@ const {
           key: "Voltage",
           start: startDate,
           end: endDate,
-          interval_type: "HOUR",
+          interval_type: "DAY",
           interval: 1,
           agg_type: "AVG",
           limit: 30,

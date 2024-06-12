@@ -56,15 +56,18 @@
 
     <Card>
       <CardHeader>
-        <CardTitle>Energy Usaged</CardTitle>
+        <CardTitle>Energy Usaged Per Day</CardTitle>
       </CardHeader>
       <CardContent>
-        <BarChart
-          :data="kWhUsageByDay"
-          index="ts"
-          :categories="['usage']"
-          :show-legend="false"
-        />
+        <div class="flex items-center">
+          <!-- <div class="-rotate-90 whitespace-nowrap h-8">kWh per day</div> -->
+          <BarChart
+            :data="kWhUsageByDay"
+            index="ts"
+            :categories="['usage']"
+            :show-legend="false"
+          />
+        </div>
       </CardContent>
     </Card>
   </div>
