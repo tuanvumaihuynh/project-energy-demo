@@ -111,7 +111,7 @@ const {
           key: "Current",
           start: startDate,
           end: endDate,
-          interval_type: "HOUR",
+          interval_type: "DAY",
           interval: 1,
           agg_type: "AVG",
           limit: 30,
@@ -125,16 +125,20 @@ const {
   }
 );
 const formatVoltage = computed(() => {
-  return metrics.value?.voltage.map((v) => ({
-    ts: v.ts.replace("T", " "),
-    voltage: v.value ?? 0,
-  }));
+  return metrics.value?.voltage
+    .sort((a, b) => new Date(a.ts).getTime() - new Date(b.ts).getTime())
+    .map((v) => ({
+      ts: v.ts.replace("T", " "),
+      voltage: v.value ?? 0,
+    }));
 });
 const formatCurrent = computed(() => {
-  return metrics.value?.current.map((v) => ({
-    ts: v.ts.replace("T", " "),
-    current: v.value ?? 0,
-  }));
+  return metrics.value?.current
+    .sort((a, b) => new Date(a.ts).getTime() - new Date(b.ts).getTime())
+    .map((v) => ({
+      ts: v.ts.replace("T", " "),
+      current: v.value ?? 0,
+    }));
 });
 defineProps<{
   kWhUsageByMonth: number;
