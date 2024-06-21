@@ -3,10 +3,10 @@
     <div class="flex flex-col gap-3 md:gap-8">
       <Card>
         <CardHeader
-          class="flex flex-row items-center justify-between space-y-0 pb-2"
+          class="flex flex-row items-center justify-between pb-2 space-y-0"
         >
           <CardTitle class="text-sm font-medium">Total Energy Usage</CardTitle>
-          <Leaf class="h-4 w-4 text-muted-foreground" />
+          <Leaf class="w-4 h-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div class="text-2xl font-bold">
@@ -16,10 +16,10 @@
       </Card>
       <Card>
         <CardHeader
-          class="flex flex-row items-center justify-between space-y-0 pb-2"
+          class="flex flex-row items-center justify-between pb-2 space-y-0"
         >
           <CardTitle class="text-sm font-medium">Total Cost</CardTitle>
-          <Wallet class="h-4 w-4 text-muted-foreground" />
+          <Wallet class="w-4 h-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div class="text-2xl font-bold">
@@ -34,11 +34,8 @@
       </Card>
     </div>
     <Card>
-      <CardHeader
-        class="flex flex-row items-center justify-between space-y-0 pb-2"
-      >
+      <CardHeader>
         <CardTitle>Current</CardTitle>
-        <span> 31/05/2024 </span>
       </CardHeader>
       <CardContent>
         <LineChart
@@ -54,11 +51,8 @@
       </CardContent>
     </Card>
     <Card>
-      <CardHeader
-        class="flex flex-row items-center justify-between space-y-0 pb-2"
-      >
-        <CardTitle>Voltage </CardTitle>
-        <span> 31/05/2024 </span>
+      <CardHeader>
+        <CardTitle>Voltage</CardTitle>
       </CardHeader>
       <CardContent>
         <LineChart
