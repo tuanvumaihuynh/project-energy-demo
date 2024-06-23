@@ -5,7 +5,7 @@
         <CardHeader
           class="flex flex-row items-center justify-between pb-2 space-y-0"
         >
-          <CardTitle class="text-sm font-medium">Total Energy Usage</CardTitle>
+          <CardTitle class="text-sm font-medium">Total kWh Usage</CardTitle>
           <Leaf class="w-4 h-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>

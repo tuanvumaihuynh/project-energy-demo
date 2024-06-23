@@ -1,16 +1,16 @@
 <template>
-  <div v-if="pending" class="flex flex-1 justify-center items-center">
+  <div v-if="pending" class="flex items-center justify-center flex-1">
     <LoaderCircle
       class="w-12 h-12 animate-spin text-primary"
       aria-label="Loading..."
     />
   </div>
   <div v-else-if="!device">Something went wrong</div>
-  <div v-else class="flex flex-col gap-3">
-    <div class="flex gap-3 items-center justify-between flex-wrap">
+  <div v-else class="flex flex-col gap-8">
+    <div class="flex flex-wrap items-center justify-between gap-3">
       <div class="flex">
         <Cpu
-          class="h-24 w-24 px-4 border-2 rounded-lg border-dashed text-primary mr-2"
+          class="w-24 h-24 px-4 mr-2 border-2 border-dashed rounded-lg text-primary"
         />
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-2">
@@ -18,7 +18,7 @@
               {{ device.name }}
             </h2>
             <span
-              class="w-2 h-2 rounded-full inline-block mr-1 sm:hidden"
+              class="inline-block w-2 h-2 mr-1 rounded-full sm:hidden"
               :class="{
                 'bg-green-500': device.connected,
                 'bg-red-500': !device.connected,
@@ -46,21 +46,19 @@
         </div>
       </div>
     </div>
-    <Separator class="my-4" />
+    <Separator />
 
-    <h1 class="text-2xl font-bold sm:text-3xl">
-      Energy Usage 01/05/2024 - 31/05/2024
-    </h1>
-    <Separator class="my-4" />
+    <h1 class="text-2xl font-bold sm:text-3xl">01/05/2024 - 31/05/2024</h1>
+    <Separator />
     <EnergyDetailsCardContainer :k-wh-usage-by-month="kWhUsageByMonth" />
 
     <Card>
       <CardHeader>
-        <CardTitle>Energy Usaged Per Day</CardTitle>
+        <CardTitle>KWh Usaged Per Day</CardTitle>
       </CardHeader>
       <CardContent>
         <div class="flex items-center">
-          <!-- <div class="-rotate-90 whitespace-nowrap h-8">kWh per day</div> -->
+          <!-- <div class="h-8 -rotate-90 whitespace-nowrap">kWh per day</div> -->
           <BarChart
             :data="kWhUsageByDay"
             index="ts"
